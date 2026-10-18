@@ -1,0 +1,35 @@
+{
+  "name": "@prjct.app/pi-skill-discovery",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Discover skills on demand without preloading their catalog into the system prompt.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "files": [
+    "index.ts",
+    "src"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "1.3.0",
+    "typebox": "1.3.27",
+    "typescript": "^5.9.3",
+    "tsx": "^4.20.0",
+    "@types/node": "^22.19.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check:package": "npm pack --dry-run --ignore-scripts"
+  }
+}
