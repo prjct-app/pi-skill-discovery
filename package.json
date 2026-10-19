@@ -1,8 +1,27 @@
 {
   "name": "@prjct.app/pi-skill-discovery",
   "version": "0.1.0",
-  "private": true,
   "description": "Discover skills on demand without preloading their catalog into the system prompt.",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-agent",
+    "pi-coding-agent",
+    "pi-extension",
+    "skills"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prjct-app/pi-skill-discovery.git"
+  },
+  "homepage": "https://github.com/prjct-app/pi-skill-discovery#readme",
+  "bugs": {
+    "url": "https://github.com/prjct-app/pi-skill-discovery/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "engines": {
     "node": ">=22.19.0"
@@ -14,7 +33,9 @@
   },
   "files": [
     "index.ts",
-    "src"
+    "src",
+    "README.md",
+    "LICENSE"
   ],
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
@@ -30,6 +51,7 @@
   "scripts": {
     "check": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
-    "check:package": "npm pack --dry-run --ignore-scripts"
+    "check:package": "npm pack --dry-run --ignore-scripts",
+    "prepublishOnly": "node -e \"if (process.env.GITHUB_ACTIONS !== 'true') { console.error('Publish only from the Release workflow: merge to main.'); process.exit(1); }\""
   }
 }
